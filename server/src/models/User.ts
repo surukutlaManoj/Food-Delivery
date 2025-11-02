@@ -53,7 +53,11 @@ const UserSchema = new Schema<IUser>({
     required: [true, 'Phone number is required'],
     match: [/^[\+]?[1-9][\d]{0,15}$/, 'Please enter a valid phone number']
   },
-  addresses: [AddressSchema]
+  addresses: [AddressSchema],
+  isActive: {
+    type: Boolean,
+    default: true
+  }
 }, {
   timestamps: true
 });
