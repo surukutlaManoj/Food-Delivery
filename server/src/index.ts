@@ -92,12 +92,17 @@ export { io };
 // Start server
 const startServer = async () => {
   try {
-    // Connect to MongoDB
+    // Connect to MongoDB (or run in mock mode)
     await connectDB();
+
+    // Create demo user for testing
+    createDemoUser();
 
     server.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
       console.log(`📱 Health check available at http://localhost:${PORT}/health`);
+      console.log(`🔗 API available at http://localhost:${PORT}/api`);
+      console.log(`👤 Demo user: demo@fooddelivery.com (any password)`);
     });
   } catch (error) {
     console.error('❌ Failed to start server:', error);
