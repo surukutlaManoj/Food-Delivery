@@ -158,6 +158,51 @@ export const logout = async (req: AuthRequest, res: Response, next: NextFunction
   }
 };
 
+// Change password (mock implementation)
+export const changePassword = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      throw createError('User not found', 404);
+    }
+
+    // In mock mode, we just return success
+    res.json({
+      success: true,
+      message: 'Password changed successfully'
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Delete account (mock implementation)
+export const deleteAccount = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      throw createError('User not found', 404);
+    }
+
+    // Remove user from mock data
+    const userIndex = mockUsers.findIndex(u => u.id === userId);
+    if (userIndex >= 0) {
+      mockUsers.splice(userIndex, 1);
+    }
+
+    res.json({
+      success: true,
+      message: 'Account deleted successfully'
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Create demo user for testing
 export const createDemoUser = () => {
   const demoUser = {
