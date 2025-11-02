@@ -15,6 +15,7 @@ export interface IUser extends Document {
   password: string;
   phone: string;
   addresses: IAddress[];
+  isActive: boolean;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
