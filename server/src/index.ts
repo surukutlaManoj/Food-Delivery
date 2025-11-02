@@ -15,6 +15,7 @@ import userRoutes from './routes/users';
 // Import middleware
 import { errorHandler } from './middleware/errorHandler';
 import { connectDB } from './config/database';
+import { createDemoUser } from './controllers/mockAuthController';
 
 // Load environment variables
 dotenv.config();
