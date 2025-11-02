@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App - Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">F</span>
+                    </div>
+                    <span class="ml-2 text-xl font-bold text-gray-900">FoodDelivery</span>
+                </div>
+
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-orange-600 font-medium">Home</a>
+                    <a href="#restaurants" class="text-gray-600 hover:text-gray-900">Restaurants</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Profile</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Orders</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-gray-600 hover:text-orange-600">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-orange-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">Login</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Delicious Food Delivered to Your Door
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-orange-100">
+                    Order from hundreds of local restaurants and get your favorite meals delivered fast.
+                </p>
+
+                <!-- Search Bar -->
+                <div class="max-w-2xl mx-auto">
+                    <div class="relative flex">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-map-marker-alt text-orange-400"></i>
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Enter your location or search for food..."
+                            class="w-full pl-10 pr-4 py-4 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white"
+                        />
+                        <button class="ml-4 bg-white text-orange-600 px-6 py-4 rounded-lg hover:bg-gray-50 font-medium">
+                            <i class="fas fa-search mr-2"></i>
+                            Search Food
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-8 mt-12">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">500+</div>
+                        <div class="text-orange-100">Restaurants</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">30min</div>
+                        <div class="text-orange-100">Avg Delivery</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">4.8★</div>
+                        <div class="text-orange-100">Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cuisines Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Browse by Cuisine
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Choose from a variety of delicious cuisines
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🍝</div>
+                    <h3 class="font-semibold text-gray-900">Italian</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🥡</div>
+                    <h3 class="font-semibold text-gray-900">Chinese</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🌮</div>
+                    <h3 class="font-semibold text-gray-900">Mexican</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🍔</div>
+                    <h3 class="font-semibold text-gray-900">American</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🍛</div>
+                    <h3 class="font-semibold text-gray-900">Indian</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🍱</div>
+                    <h3 class="font-semibold text-gray-900">Japanese</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🍜</div>
+                    <h3 class="font-semibold text-gray-900">Thai</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover cursor-pointer">
+                    <div class="text-4xl mb-3">🍕</div>
+                    <h3 class="font-semibold text-gray-900">Pizza</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Restaurants -->
+    <section id="restaurants" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Featured Restaurants
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        Top-rated restaurants in your area
+                    </p>
+                </div>
+                <button class="text-orange-600 hover:text-orange-700 font-medium">
+                    View All <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Restaurant 1 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden card-hover cursor-pointer">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop" alt="Bella Italia" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-1"></i>
+                            <span class="text-sm font-medium">4.5</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Bella Italia</h3>
+                        <p class="text-gray-600 text-sm mb-4">Authentic Italian cuisine with a modern twist</p>
+                        <div class="flex items-center text-sm text-gray-500 space-x-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-clock mr-1"></i>
+                                30-45 min
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-truck mr-1"></i>
+                                $2.99
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant 2 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden card-hover cursor-pointer">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Dragon Palace" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-1"></i>
+                            <span class="text-sm font-medium">4.3</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Dragon Palace</h3>
+                        <p class="text-gray-600 text-sm mb-4">Traditional Chinese cuisine</p>
+                        <div class="flex items-center text-sm text-gray-500 space-x-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-clock mr-1"></i>
+                                25-40 min
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-truck mr-1"></i>
+                                $1.99
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant 3 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden card-hover cursor-pointer">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop" alt="Taco Fiesta" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-1"></i>
+                            <span class="text-sm font-medium">4.6</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Taco Fiesta</h3>
+                        <p class="text-gray-600 text-sm mb-4">Authentic Mexican street food</p>
+                        <div class="flex items-center text-sm text-gray-500 space-x-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-clock mr-1"></i>
+                                20-35 min
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-truck mr-1"></i>
+                                $2.49
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    How It Works
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Get your favorite food delivered in 3 simple steps
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-orange-600">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        Find Restaurants
+                    </h3>
+                    <p class="text-gray-600">
+                        Browse through hundreds of restaurants and cuisines in your area.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-orange-600">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        Place Your Order
+                    </h3>
+                    <p class="text-gray-600">
+                        Add your favorite items to cart and checkout with secure payment.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-orange-600">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        Enjoy Your Meal
+                    </h3>
+                    <p class="text-gray-600">
+                        Track your order in real-time and enjoy delicious food at your doorstep.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">F</span>
+                        </div>
+                        <span class="ml-2 text-xl font-bold">FoodDelivery</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Delivering delicious food from your favorite restaurants right to your doorstep.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 FoodDelivery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="bg-white rounded-xl p-8 max-w-md w-full">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-utensils text-2xl text-orange-600"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                        Food Delivery Demo
+                    </h2>
+                    <p class="text-gray-600 mb-6">
+                        This is a static demo of the Food Delivery application. The full MERN stack application includes:
+                    </p>
+                    <ul class="text-left text-gray-600 mb-6 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>React frontend with TypeScript</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Node.js/Express backend</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>MongoDB database</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>User authentication</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Shopping cart functionality</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Real-time order tracking</li>
+                    </ul>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                        <p class="text-sm text-blue-800">
+                            <strong>Demo Credentials:</strong><br>
+                            Email: demo@fooddelivery.com<br>
+                            Password: any password
+                        </p>
+                    </div>
+                    <button onclick="closeDemoModal()" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 w-full">
+                        Got it!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show demo modal on page load
+        setTimeout(() => {
+            document.getElementById('demoModal').classList.remove('hidden');
+        }, 1000);
+
+        function closeDemoModal() {
+            document.getElementById('demoModal').classList.add('hidden');
+        }
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add interactivity to cuisine cards
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('click', function() {
+                // Simulate navigation
+                alert('This is a demo. In the full app, this would navigate to the restaurant page.');
+            });
+        });
+
+        // Cart functionality
+        let cartCount = 3;
+        document.querySelector('.fa-shopping-cart').addEventListener('click', function() {
+            alert(`Cart has ${cartCount} items. In the full app, this would open the cart page.`);
+        });
+    </script>
+</body>
+</html>
