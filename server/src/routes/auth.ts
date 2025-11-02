@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import Joi from 'joi';
 import * as authController from '../controllers/authController';
 import { authenticate } from '../middleware/auth';
 import { validate, schemas } from '../middleware/validation';
