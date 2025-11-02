@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as restaurantController from '../controllers/restaurantController';
+import * as restaurantController from '../controllers/mockRestaurantController';
 import { validateQuery, validateParams, schemas } from '../middleware/validation';
 
 const router = Router();
