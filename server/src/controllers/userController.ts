@@ -1,4 +1,5 @@
 import { Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
 import { User } from '../models/User';
 import { AuthRequest } from '../middleware/auth';
 import { createError } from '../middleware/errorHandler';
@@ -77,6 +78,7 @@ export const addAddress = async (req: AuthRequest, res: Response, next: NextFunc
 
     // Add new address
     const newAddress = {
+      _id: new mongoose.Types.ObjectId(),
       street,
       city,
       state,

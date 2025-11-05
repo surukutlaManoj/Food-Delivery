@@ -16,7 +16,7 @@ export interface IDeliveryAddress {
   coordinates?: [number, number];
 }
 
-export interface IOrder extends Document {
+interface BaseOrder {
   userId: mongoose.Types.ObjectId;
   restaurantId: mongoose.Types.ObjectId;
   items: IOrderItem[];
@@ -28,11 +28,18 @@ export interface IOrder extends Document {
   status: 'pending' | 'confirmed' | 'preparing' | 'ready' | 'delivering' | 'delivered' | 'cancelled';
   paymentId: string;
   paymentStatus: 'pending' | 'paid' | 'failed' | 'refunded';
-  estimatedDeliveryTime?: Date;
-  actualDeliveryTime?: Date;
-  specialInstructions?: string;
+  estimatedDeliveryTime: Date;
+}
+
+interface OrderMethods {
+  calculateEstimatedDeliveryTime(): Date;
+}
+
+export interface IOrder extends Document, BaseOrder, OrderMethods {
   createdAt: Date;
   updatedAt: Date;
+  actualDeliveryTime?: Date;
+  specialInstructions?: string;
 }
 
 const OrderItemSchema = new Schema<IOrderItem>({
@@ -68,7 +75,7 @@ const DeliveryAddressSchema = new Schema<IDeliveryAddress>({
   coordinates: [Number]
 }, { _id: false });
 
-const OrderSchema = new Schema<IOrder>({
+const OrderSchema = new Schema<IOrder, mongoose.Model<IOrder>, OrderMethods>({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -119,10 +126,12 @@ const OrderSchema = new Schema<IOrder>({
     default: 'pending'
   },
   estimatedDeliveryTime: {
-    type: Date
+    type: Date,
+    required: true
   },
   actualDeliveryTime: {
-    type: Date
+    type: Date,
+    required: false
   },
   specialInstructions: {
     type: String,

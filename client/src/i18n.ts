@@ -50,7 +50,8 @@ export const i18n = {
 };
 
 export const t = (key: string): string => {
-  return i18n.messages[i18n.locale]?.[key] || key;
+  const messages = i18n.messages[i18n.locale as keyof typeof i18n.messages];
+  return (messages as any)?.[key] || key;
 };
 
 export default i18n;

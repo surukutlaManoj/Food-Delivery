@@ -208,6 +208,10 @@ export interface CartContextType {
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   setRestaurant: (restaurantId: string, restaurantName: string) => void;
+  getItemCount: () => number;
+  isEmpty: () => boolean;
+  hasRestaurantItems: (restaurantId: string) => boolean;
+  getCartTotals: () => { subtotal: number; deliveryFee: number; tax: number; total: number };
 }
 
 // Error Types

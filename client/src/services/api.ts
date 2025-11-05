@@ -107,7 +107,7 @@ export const authAPI = {
     apiService.post('/auth/change-password', data),
 
   deleteAccount: (data: { password: string }) =>
-    apiService.delete('/auth/account', data),
+    apiService.post('/auth/account/delete', data),
 };
 
 export const restaurantAPI = {

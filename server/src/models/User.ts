@@ -2,6 +2,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 export interface IAddress {
+  _id: mongoose.Types.ObjectId;
   street: string;
   city: string;
   state: string;
@@ -9,25 +10,35 @@ export interface IAddress {
   isDefault: boolean;
 }
 
-export interface IUser extends Document {
+interface BaseUser {
   name: string;
   email: string;
   password: string;
   phone: string;
   addresses: IAddress[];
   isActive: boolean;
+}
+
+export interface IUser extends Document, BaseUser {
+  _id: mongoose.Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
 const AddressSchema = new Schema<IAddress>({
+  _id: {
+    type: Schema.Types.ObjectId,
+    default: () => new mongoose.Types.ObjectId()
+  },
   street: { type: String, required: true },
   city: { type: String, required: true },
   state: { type: String, required: true },
   zipCode: { type: String, required: true },
   isDefault: { type: Boolean, default: false }
-}, { _id: false });
+});
 
-const UserSchema = new Schema<IUser>({
+const UserSchema = new Schema<IUser, mongoose.Model<IUser>>({
   name: {
     type: String,
     required: [true, 'Name is required'],

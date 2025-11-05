@@ -1,4 +1,5 @@
 import { Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
 import { User } from '../models/User';
 import { generateToken } from '../middleware/auth';
 import { AuthRequest } from '../middleware/auth';
@@ -35,7 +36,7 @@ export const register = async (req: AuthRequest, res: Response, next: NextFuncti
     await user.save();
 
     // Generate JWT token
-    const token = generateToken(user._id.toString());
+    const token = generateToken(user._id as mongoose.Types.ObjectId);
 
     // Return user data without password
     const userResponse = {

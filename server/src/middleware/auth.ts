@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
+import mongoose from 'mongoose';
 import { User, IUser } from '../models/User';
 import { createError } from './errorHandler';
 
@@ -39,10 +40,10 @@ export const authenticate = async (req: AuthRequest, res: Response, next: NextFu
     req.user = user;
     next();
 
-  } catch (error) {
-    if (error.name === 'JsonWebTokenError') {
+  } catch (error: any) {
+    if (error?.name === 'JsonWebTokenError') {
       next(createError('Invalid token', 401));
-    } else if (error.name === 'TokenExpiredError') {
+    } else if (error?.name === 'TokenExpiredError') {
       next(createError('Token expired', 401));
     } else {
       next(error);
@@ -81,11 +82,18 @@ export const optionalAuth = async (req: AuthRequest, res: Response, next: NextFu
 };
 
 // Generate JWT token
-export const generateToken = (userId: string): string => {
+export const generateToken = (userId: string | mongoose.Types.ObjectId): string => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error('JWT_SECRET is not defined');
+  }
+  const jwtSecret = process.env.JWT_SECRET;
+  const jwtExpire = process.env.JWT_EXPIRE || '86400'; // 24 hours in seconds
+
+  const options: SignOptions = { expiresIn: parseInt(jwtExpire) };
   return jwt.sign(
-    { userId },
-    process.env.JWT_SECRET!,
-    { expiresIn: process.env.JWT_EXPIRE || '24h' }
+    { userId: userId.toString() },
+    jwtSecret,
+    options
   );
 };
 
@@ -122,7 +130,8 @@ export const refreshToken = async (req: AuthRequest, res: Response, next: NextFu
     });
 
   } catch (error) {
-    if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
+    const err = error as any;
+    if (err?.name === 'JsonWebTokenError' || err?.name === 'TokenExpiredError') {
       next(createError('Invalid or expired refresh token', 401));
     } else {
       next(error);

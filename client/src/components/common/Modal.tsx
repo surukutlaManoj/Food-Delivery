@@ -64,7 +64,7 @@ const Modal: React.FC<ModalProps> = ({
           tabIndex={-1}
         >
           {/* Header */}
-          {(title || onClose) && (
+          {(title || typeof onClose === 'function') && (
             <div className="flex items-center justify-between border-b border-secondary-200 px-6 py-4">
               {title && (
                 <h2 id="modal-title" className="text-lg font-semibold text-secondary-900">
